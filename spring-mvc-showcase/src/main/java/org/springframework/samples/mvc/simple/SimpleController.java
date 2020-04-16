@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SimpleController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SimpleController.class);
-	
+
 	@GetMapping("/simple")
+	//@GetMapping(value = "/simple", produces = "text/plain;charset=UTF-8")
 	public String simple() {
 		logger.info("SimpleController.simple");
+		//return "안녕 세상아!";
 		return "Hello world!";
 	}
 }
