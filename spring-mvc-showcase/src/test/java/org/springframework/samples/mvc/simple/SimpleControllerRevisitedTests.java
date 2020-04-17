@@ -13,10 +13,11 @@ public class SimpleControllerRevisitedTests {
 	@Test
 	public void simple() throws Exception {
 		standaloneSetup(new SimpleControllerRevisited()).build()
-			.perform(get("/simple/revisited").accept(MediaType.TEXT_PLAIN))
-			.andExpect(status().isOk())
-			.andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-			.andExpect(content().string("Hello world revisited!"));
+				//.perform(get("/simple/revisited").accept(MediaType.TEXT_PLAIN))//
+				//.perform(get("/simple/revisited").contentType(MediaType.APPLICATION_JSON)) //
+				.perform(get("/simple/revisited").accept(MediaType.APPLICATION_JSON)) //
+				.andExpect(status().isOk())//
+				.andExpect(content().contentType("application/json;charset=ISO-8859-1"))//
+				.andExpect(content().string("Hello world revisited!"));
 	}
-
 }
