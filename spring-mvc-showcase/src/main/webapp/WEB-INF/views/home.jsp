@@ -566,10 +566,20 @@ $(document).ready(function() {
 	$("form.readJsonForm").submit(function() {
 		var form = $(this);
 		var button = form.children(":first");
-		var data = form.hasClass("invalid") ?
-				"{ \"foo\": \"bar\" }" : 
-				"{ \"foo\": \"bar\", \"fruit\": \"apple\" }";
-		$.ajax({ type: "POST", url: form.attr("action"), data: data, contentType: "application/json", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
+		var data = form.hasClass("invalid") ? "{ \"foo\": \"bar\" }" : "{ \"foo\": \"bar\", \"fruit\": \"apple\" }";
+		$.ajax({ 
+			type: "POST", 
+			url: form.attr("action"), 
+			data: data, 
+			contentType: "application/json", 
+			dataType: "text", 
+			success: function(text) { 
+				MvcUtil.showSuccessResponse(text, button); 
+			}, 
+			error: function(xhr) { 
+				MvcUtil.showErrorResponse(xhr.responseText, button); 
+			}
+		});
 		return false;
 	});
 
@@ -638,7 +648,20 @@ $(document).ready(function() {
 
 	$("#byHeader").click(function(){
 		var link = $(this);
-		$.ajax({ url: this.href, dataType: "text", beforeSend: function(req) { req.setRequestHeader("FooHeader", "foo"); }, success: function(form) { MvcUtil.showSuccessResponse(form, link); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, link); }});
+		$.ajax({ ㄴ
+			url: this.href, 
+			dataType: "text", 
+			beforeSend: function(req) { 
+				// ajax 통신 시에 HTTP 요청 헤더를 설정
+				req.setRequestHeader("FooHeader", "foo"); 
+			}, 
+			success: function(form) { 
+				MvcUtil.showSuccessResponse(form, link); 
+			}, 
+			error: function(xhr) { 
+				MvcUtil.showErrorResponse(xhr.responseText, link); 
+			}
+		});
 		return false;
 	});
 

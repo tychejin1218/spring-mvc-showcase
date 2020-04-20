@@ -74,11 +74,27 @@ public class MappingController {
 		return "Mapped by path + method + absence of header!";
 	}
 
+	/*
+	@RequestBody  
+ 	- HTTP 요청의 body 내용을 자바 객체로 매핑하는 역할을 합니다.
+
+	@ResponseBody 
+ 	- 자바 객체를 HTTP 요청의 body 내용으로 매핑하는 역할을 합니다.
+	*/
+	
+	/*
+	consumes
+	 - 수신 하고자하는 데이터 포맷을 정의합니다.
+	produces 
+	 - 출력하고자 하는 데이터 포맷을 정의합니다.		
+	*/	
 	@PostMapping(path = "/mapping/consumes", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String byConsumes(@RequestBody JavaBean javaBean) {
+		logger.info("javaBean.getFoo() : " + javaBean.getFoo());
+		logger.info("javaBean.getFruit() : " + javaBean.getFruit());		
 		return "Mapped by path + method + consumable media type (javaBean '" + javaBean + "')";
 	}
-
+	
 	@GetMapping(path = "/mapping/produces", produces = MediaType.APPLICATION_JSON_VALUE)
 	public JavaBean byProducesJson() {
 		return new JavaBean();
@@ -88,5 +104,4 @@ public class MappingController {
 	public JavaBean byProducesXml() {
 		return new JavaBean();
 	}
-
 }
