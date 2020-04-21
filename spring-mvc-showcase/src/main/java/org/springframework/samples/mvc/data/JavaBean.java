@@ -3,9 +3,9 @@ package org.springframework.samples.mvc.data;
 public class JavaBean {
 
 	private String param1;
-	
+
 	private String param2;
-	
+
 	private String param3;
 
 	public String getParam1() {
@@ -32,4 +32,8 @@ public class JavaBean {
 		this.param3 = param3;
 	}
 
+	@Override
+	public String toString() {
+		return "JavaBean [param1=" + param1 + ", param2=" + param2 + ", param3=" + param3 + "]";
+	}
 }
