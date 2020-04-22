@@ -648,7 +648,7 @@ $(document).ready(function() {
 
 	$("#byHeader").click(function(){
 		var link = $(this);
-		$.ajax({ ㄴ
+		$.ajax({
 			url: this.href, 
 			dataType: "text", 
 			beforeSend: function(req) { 
